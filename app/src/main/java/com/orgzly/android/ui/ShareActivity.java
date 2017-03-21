@@ -275,6 +275,10 @@ public class ShareActivity extends CommonActivity
     }
 
     @Override
+    public void onNoteAttachRequest(Note note) {
+    }
+
+    @Override
     public void onNoteCancelRequest(Note note) {
         finish();
     }

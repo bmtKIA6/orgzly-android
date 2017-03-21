@@ -95,6 +95,7 @@ public class MainActivity extends CommonActivity
     public static final String TAG = MainActivity.class.getName();
 
     public static final int ACTIVITY_REQUEST_CODE_FOR_FILE_CHOOSER = 0;
+    public static final int ACTIVITY_REQUEST_MEDIA_FOR_ATTACH = 1;
 
     private static final String GETTING_STARTED_NOTEBOOK_NAME = "Getting Started with Orgzly";
     private static final int GETTING_STARTED_NOTEBOOK_RESOURCE_ID = R.raw.orgzly_getting_started;
@@ -605,6 +606,11 @@ public class MainActivity extends CommonActivity
                     mImportChosenBook = bundle;
                 }
                 break;
+            case ACTIVITY_REQUEST_MEDIA_FOR_ATTACH:
+                if (requestCode == RESULT_OK) {
+                    Uri uri = data.getData();
+
+                }
         }
     }
 
@@ -801,6 +807,20 @@ public class MainActivity extends CommonActivity
         popBackStackAndCloseKeyboard();
         mSyncFragment.deleteNotes(note.getPosition().getBookId(), note.getId());
     }
+
+
+    @Override
+    public void onNoteAttachRequest(Note note) {
+
+        System.err.println("here");
+        //mSyncFragment.attachNotes(note.getPosition().getBookId(), note.getId());
+
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("*/*");
+        startActivityForResult(intent, ACTIVITY_REQUEST_MEDIA_FOR_ATTACH);
+    }
+
 
     @Override
     public void onStateChangeRequest(Set<Long> noteIds, String state) {

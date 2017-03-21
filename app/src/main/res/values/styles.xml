@@ -130,6 +130,7 @@
         <item name="oic_load_book_option">@drawable/ic_folder_open_black_24dp</item>
 
         <item name="oic_done">@drawable/ic_done_black_24dp</item>
+        <item name="oic_attach">@drawable/ic_attach_black_24dp</item>
         <item name="oic_close">@drawable/ic_close_black_24dp</item>
 
         <item name="oic_fragment_note_tags">@drawable/ic_label_outline_black_24dp</item>
@@ -287,6 +288,7 @@
         <item name="oic_load_book_option">@drawable/ic_folder_open_white_24dp</item>
 
         <item name="oic_done">@drawable/ic_done_white_24dp</item>
+        <item name="oic_attach">@drawable/ic_attach_white_24dp</item>
         <item name="oic_close">@drawable/ic_close_white_24dp</item>
 
         <item name="oic_fragment_note_tags">@drawable/ic_label_outline_white_24dp</item>

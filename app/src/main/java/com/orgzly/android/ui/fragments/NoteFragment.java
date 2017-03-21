@@ -994,6 +994,7 @@ public class NoteFragment extends Fragment
             menu.removeItem(R.id.close);
             menu.removeItem(R.id.done);
             menu.removeItem(R.id.delete);
+            menu.removeItem(R.id.attach);
         }
 
         /* Newly created note cannot be deleted. */
@@ -1022,6 +1023,9 @@ public class NoteFragment extends Fragment
                 delete();
                 return true;
 
+            case R.id.attach:
+                attach();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -1045,6 +1049,9 @@ public class NoteFragment extends Fragment
                 .create()
                 .show();
     }
+
+    private void attach() { mListener.onNoteAttachRequest(mNote); }
+
 
     private void cancel() {
         mListener.onNoteCancelRequest(mNote);
@@ -1136,5 +1143,6 @@ public class NoteFragment extends Fragment
         void onNoteUpdateRequest(Note note);
         void onNoteCancelRequest(Note note);
         void onNoteDeleteRequest(Note note);
+        void onNoteAttachRequest(Note note);
     }
 }
