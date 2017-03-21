@@ -7,6 +7,7 @@ import android.support.test.InstrumentationRegistry;
 import com.orgzly.R;
 import com.orgzly.android.prefs.AppPreferences;
 import com.orgzly.android.prefs.AppPreferencesValues;
+import com.orgzly.android.provider.Database;
 import com.orgzly.android.provider.clients.DbClient;
 import com.orgzly.android.repos.Repo;
 import com.orgzly.android.repos.RepoFactory;
@@ -44,7 +45,9 @@ public class OrgzlyTest {
 
         // new LocalFileStorage(context).cleanup();
 
-        /* Request from content provider's to change context to use test database.*/
+        /* Request content provider to close the current database
+         * and open a new one with a different name.
+         */
         DbClient.toTest(context);
 
         /* Recreate all tables. */
