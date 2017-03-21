@@ -17,6 +17,12 @@
         android:title="@string/close"/>
 
     <item
+        android:id="@+id/attach"
+        android:icon="?attr/oic_attach"
+        app:showAsAction="always"
+        android:title="@string/attach"/>
+
+    <item
         android:id="@+id/delete"
         android:icon="?attr/oic_delete_item"
         app:showAsAction="never"

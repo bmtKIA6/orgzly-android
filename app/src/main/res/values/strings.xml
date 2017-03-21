@@ -20,6 +20,7 @@
     <string name="dropbox">Dropbox</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="attach">Attach</string>
     <string name="name">Name</string>
     <string name="value">Value</string>
     <string name="query">Query</string>
