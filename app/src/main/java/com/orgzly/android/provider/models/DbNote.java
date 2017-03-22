@@ -25,6 +25,8 @@ public class DbNote {
             "CREATE TABLE IF NOT EXISTS " + TABLE + " (" +
             BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
 
+            Columns.UUID + " TEXT, " +
+
             /* Position/structure */
             Columns.BOOK_ID + " INTEGER NOT NULL," +
             Columns.POSITION + " INTEGER NOT NULL," +
@@ -52,6 +54,7 @@ public class DbNote {
             Columns.CLOCK_RANGE_ID + " INTEGER)",
 
             /* For search. */
+            "CREATE INDEX IF NOT EXISTS i_" + TABLE + "_" + Columns.UUID + " ON " + TABLE + "(" + Columns.UUID + ")",
             "CREATE INDEX IF NOT EXISTS i_" + TABLE + "_" + Columns.TITLE + " ON " + TABLE + "(" + Columns.TITLE + ")",
             "CREATE INDEX IF NOT EXISTS i_" + TABLE + "_" + Columns.TAGS + " ON " + TABLE + "(" + Columns.TAGS + ")",
             "CREATE INDEX IF NOT EXISTS i_" + TABLE + "_" + Columns.CONTENT + " ON " + TABLE + "(" + Columns.CONTENT + ")",
@@ -68,6 +71,7 @@ public class DbNote {
 
     public static final String DROP_SQL = "DROP TABLE IF EXISTS " + TABLE;
     public static String[] POSITION_PROJECTION = new String[] {
+            Column.UUID,
             Column.BOOK_ID,
             Column.LEVEL,
             Column.LFT,
@@ -79,6 +83,7 @@ public class DbNote {
     };
 
     public static void toContentValues(SQLiteDatabase db, ContentValues values, OrgHead head) {
+
         values.put(Column.TITLE, head.getTitle());
 
         values.put(Column.PRIORITY, head.getPriority());
@@ -228,6 +233,8 @@ public class DbNote {
     }
 
     public interface Columns {
+
+        String UUID = "uuid";
         String BOOK_ID = "book_id";
         String POSITION = "position";
 

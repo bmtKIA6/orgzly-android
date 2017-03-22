@@ -2,11 +2,15 @@ package com.orgzly.android;
 
 import com.orgzly.org.OrgHead;
 
+import java.util.UUID;
+
 /**
  * Note with {@link OrgHead} and {@link NotePosition} in the notebook.
  */
 public class Note {
     private long id;
+
+    private String uuid;
 
     private OrgHead head;
 
@@ -20,6 +24,7 @@ public class Note {
 
 
     public Note() {
+        this.uuid = UUID.randomUUID().toString();
         this.head = new OrgHead();
         this.position = new NotePosition();
     }
@@ -53,6 +58,10 @@ public class Note {
         this.head = head;
     }
 
+    public String getUuid() { return uuid; }
+
+    public void setUuid(String s) { this.uuid = s; }
+
     public long getId() {
         return id;
     }
@@ -80,13 +89,14 @@ public class Note {
 
     public String toString() {
         return String.format(
-                "[%d-%d]  L:%d  Desc:%d  Folded:%s  FoldedUnder:%d  Id: %d",
+                "[%d-%d]  L:%d  Desc:%d  Folded:%s  FoldedUnder:%d  Id: %d, uuid: %s",
                 position.getLft(),
                 position.getRgt(),
                 position.getLevel(),
                 position.getDescendantsCount(),
                 this.isFolded(),
                 position.getFoldedUnderId(),
-                id);
+                id,
+                uuid);
     }
 }

@@ -97,6 +97,7 @@ public class NotesClient {
 
         values.put(ProviderContract.Notes.UpdateParam.POSITION, 0); // TODO: Remove
 
+        values.put(ProviderContract.Notes.UpdateParam.UUID, note.getUuid());
         toContentValues(values, note.getHead());
     }
 

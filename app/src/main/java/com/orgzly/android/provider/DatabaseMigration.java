@@ -45,8 +45,10 @@ public class DatabaseMigration {
     private static final int DB_VER_6 = 135;
     private static final int DB_VER_7 = 136;
     private static final int DB_VER_8 = 137;
+    private static final int DB_VER_9 = 138;
 
-    static final int DB_VER_CURRENT = DB_VER_8;
+
+    static final int DB_VER_CURRENT = DB_VER_9;
 
     /**
      * Start from the old version and go through all changes. No breaks.
@@ -108,6 +110,10 @@ public class DatabaseMigration {
 
             case DB_VER_7:
                 encodeRookUris(db);
+            case DB_VER_9:
+                db.execSQL("ALTER TABLE notes ADD COLUMN uuid"); // UUID
+                db.execSQL("CREATE INDEX IF NOT EXISTS i_notes_uuid ON notes(uuid)"); // UUID
+
         }
     }
 
